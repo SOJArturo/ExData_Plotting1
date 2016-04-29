@@ -1,0 +1,6 @@
+elec1 <- read.table("household_power_consumption.txt", nrows = 1, sep = ";", head = T)
+house <- read.table("household_power_consumption.txt", skip = 66637, nrows = 2880, sep = ";", head = F, na.string = "?")
+colnames(house) <- names(elec1)
+png('plot1.png', width = 480, height = 480, units = "px")
+hist(house$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)")
+device.off()

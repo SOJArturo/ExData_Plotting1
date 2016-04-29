@@ -1,0 +1,8 @@
+elec1 <- read.table("household_power_consumption.txt", nrows = 1, sep = ";", head = T)
+house <- read.table("household_power_consumption.txt", skip = 66637, nrows = 2880, sep = ";", head = F, na.string = "?")
+colnames(house) <- names(elec1)
+png('plot2.png', width = 480, height = 480, units = "px")
+plot(c(1:2880), house$Global_active_power, xaxt = "n", type = "n", xlab = "", ylab = "Global Active Power (kilowatts)")
+lines(c(1:2880), house$Global_active_power)
+axis(1, at = c(1, 1440, 2880), labels = c("Thu", "Fri", "Sat"))
+dev.off()
